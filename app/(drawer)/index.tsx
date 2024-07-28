@@ -1,11 +1,10 @@
-import { Redirect } from "expo-router";
-import { Text, View,StyleSheet } from "react-native";
+import { View,Text,StyleSheet } from "react-native";
 
 export default function Home() {
-
+ 
   return (
     <View>
-      <Text>Home</Text>
+      <Text style={styles.title}>Home</Text>
     </View>
   );
 }
@@ -13,4 +12,7 @@ const styles = StyleSheet.create({
   container:{
     flex:1,
   },
+  title:{
+    
+  }
 })
