@@ -9,11 +9,23 @@ import { useUser } from "@/hooks/context";
 
 export default function AppLayout() {
 
-  const {token,isLoading} = useUser();
+  const {token,userData,isLoading} = useUser();
   const {width} = useWindowDimensions()
 
-  if (isLoading) {return(<Text>Loading</Text>)}
-  if (!token) {return (<Redirect href="/login" />)}
+  if (isLoading) {
+    console.log(token)
+    console.log(userData?.id)
+    return(
+    <Text>Loading</Text>
+  )
+}
+  if (!userData?.id && !token) {
+    console.log(token)
+    console.log(userData?.id)
+    return (
+    <Redirect href="/login" />
+  )
+  }
 
   return (
     <Drawer  

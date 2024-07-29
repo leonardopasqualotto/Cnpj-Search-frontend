@@ -15,11 +15,9 @@ export default function Root() {
  
   return (
     <ClerkProvider publishableKey={publishableKey}>
-      <ClerkLoaded>
         <UserProvider>
           <Slot/>
         </UserProvider>
-      </ClerkLoaded>
     </ClerkProvider>
   );
 }

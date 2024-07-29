@@ -1,17 +1,29 @@
 import { useEffect, useState } from 'react';
-import {StyleSheet, Text, View} from "react-native"; 
+import {Platform, StyleSheet, Text, View} from "react-native"; 
 import { Link } from 'expo-router';
 import { SignInButton } from './SignInButton';
 import { Divider } from './Divider'
 import { SocialLoginButton } from './SocialLoginButton';
 import { InputGroup } from './InputGroup';
+import { useUser } from '@/hooks/context';
+import * as WebBrowser from "expo-web-browser";
+import React from 'react';
+
+WebBrowser.maybeCompleteAuthSession()
 
 export default function SignInForm() {
- 
 
   const [user,setUser] = useState('');
   const [password,setPassword] = useState('');
+  const {signInWithGoogleOnWeb} = useUser()
+  
+  const {signInWithGoogle} = useUser()
 
+ function handleSignIn(){
+  if(Platform.OS != 'web'){signInWithGoogle()}
+  if(Platform.OS == 'web'){signInWithGoogleOnWeb()}
+}
+  
   return (
       <View style={styles.container}>
         <Text style={styles.subtitle}>Sign in to your account</Text>
@@ -20,8 +32,8 @@ export default function SignInForm() {
         <SignInButton user={user}password={password} />
         <Divider />
         <View style={styles.alternativeLogin}>
-          <SocialLoginButton image={require('@/assets/images/google.png')} socialMedia='Google' />
-          <SocialLoginButton image={require('@/assets/images/github.png')} socialMedia='GitHub' />
+          <SocialLoginButton icon='logo-google' isLoading={false} onPress={handleSignIn} title={''}/>
+          <SocialLoginButton icon='logo-github' isLoading={false} onPress={handleSignIn} title={''} />
         </View>
         <Text style={styles.footerText}>Not a member?{' '}<Link href={'/register'} style={styles.footerLink}>Register</Link></Text>
      </View>

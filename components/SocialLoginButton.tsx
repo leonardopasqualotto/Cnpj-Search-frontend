@@ -1,16 +1,21 @@
-import {Image,Text, StyleSheet, ImageProps, Pressable } from 'react-native';
+import {Text,StyleSheet,ActivityIndicator, TouchableOpacity, TouchableOpacityProps, Pressable } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
-interface SocialLoginButtonProps{
-  image:ImageProps,
-  socialMedia:string,
+interface SocialLoginButtonProps extends TouchableOpacityProps{
+  title:string,
+  isLoading?:boolean
+  icon: keyof typeof Ionicons.glyphMap
 }
 
-export function SocialLoginButton({image, socialMedia}:SocialLoginButtonProps) {
- 
+export function SocialLoginButton({title,isLoading=false,icon,...rest}:SocialLoginButtonProps) {
   return (
-    <Pressable style={styles.socialLogin} onPress={()=>console.log("oi")}>
-        <Image style={{height:20,width:20}} source={image}/>
-        <Text style={styles.socialLoginText}>{socialMedia}</Text>
+    <Pressable style={styles.socialLogin}  disabled={isLoading}{...rest} >
+      {isLoading ? <ActivityIndicator color={'#000'}/> : 
+      <> 
+       <Ionicons name={icon} size={20} />
+        <Text style={styles.socialLoginText}>{title}</Text>
+      </>
+      }
     </Pressable>
   );
 }
@@ -30,6 +35,6 @@ socialLoginText:{
     width:'100%',
     justifyContent:'center',
     flexDirection:'row',
-    alignItems:'center'
+    alignItems:'center',
   },
 })
