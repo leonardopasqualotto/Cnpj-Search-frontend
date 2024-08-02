@@ -1,24 +1,22 @@
 import React from "react"; 
 import {Image} from 'react-native'
 import { Drawer } from 'expo-router/drawer';
-import {  useWindowDimensions} from "react-native";
+import {  useWindowDimensions,Text} from "react-native";
 import { DrawerToggleButton } from "@react-navigation/drawer";
 import CustomDrawerContent from "@/components/CustomDrawerContent";
-import { useUserData } from "@/hooks/context";
 import { Redirect, } from "expo-router";
+import { useAuthContext } from "@/hooks/context";
 
 export default function AppLayout() {
-  console.log("vai pro AppLayout")
 
   const {width} = useWindowDimensions()
-  const{userData,token} = useUserData()
-  const uri = userData?.picture
+  const {token,isLoading} = useAuthContext()
+  if(isLoading) return(<Text>loading</Text>)
 
-  if(!token && !userData ){
-    console.log("vai pro login")
-    return(<Redirect href={"/login"}/>)
-}
-console.log("vai pra Home")
+  if(!token )return(<Redirect href={"/login"}/>)
+    
+
+
     return (
       <Drawer 
         drawerContent={CustomDrawerContent}

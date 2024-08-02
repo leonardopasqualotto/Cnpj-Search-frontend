@@ -2,24 +2,11 @@ import { DrawerContentScrollView } from "@react-navigation/drawer";
 import CustomDrawerItem from "./CustomDrawerItem";
 import { router } from "expo-router";
 import {Image,Platform,StyleSheet} from 'react-native'
-import { useUserData } from "@/hooks/context";
-import { useAuth } from "@clerk/clerk-expo";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useAuthContext } from "@/hooks/context";
+
 
 export default function CustomDrawerContent() {
-  const {signOut,isSignedIn} = useAuth();
-  const { signOutonWeb} = useUserData()
-
-  async function handleSignOut(){
-    if(Platform.OS =="web"){
-      signOutonWeb()
-    }else{
-      signOut()
-      
-      signOutonWeb()
-      console.log(isSignedIn)
-    }
-  }
+  const {signOut} =useAuthContext()
     return (
       <DrawerContentScrollView >
         <Image 
@@ -37,7 +24,7 @@ export default function CustomDrawerContent() {
             iconName='person' />
         <CustomDrawerItem 
             label={"Sair"} 
-            onPress={()=>handleSignOut()} 
+            onPress={()=>signOut()} 
             iconName='logout' 
         />
       </DrawerContentScrollView>
