@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import {Platform, StyleSheet, Text, View} from "react-native"; 
-import { Link } from 'expo-router';
+
 import { SignInButton } from './SignInButton';
 import { Divider } from './Divider'
 import { SocialLoginButton } from './SocialLoginButton';
 import { InputGroup } from './InputGroup';
-import { useUser } from '@/hooks/context';
+import { useUserData } from '@/hooks/context';
 import * as WebBrowser from "expo-web-browser";
 import React from 'react';
 
@@ -15,13 +15,17 @@ export default function SignInForm() {
 
   const [user,setUser] = useState('');
   const [password,setPassword] = useState('');
-  const {signInWithGoogleOnWeb} = useUser()
-  
-  const {signInWithGoogle} = useUser()
+  const {signInWithGoogleOnWeb} = useUserData()
+  const {signInWithGoogleOnMobile} = useUserData()
 
  function handleSignIn(){
-  if(Platform.OS != 'web'){signInWithGoogle()}
-  if(Platform.OS == 'web'){signInWithGoogleOnWeb()}
+  if(Platform.OS != 'web'){
+    signInWithGoogleOnMobile()
+  }
+  if(Platform.OS == 'web'){
+    signInWithGoogleOnWeb()
+    console.log("iniciando signIn na web")
+  }
 }
   
   return (
@@ -32,10 +36,10 @@ export default function SignInForm() {
         <SignInButton user={user}password={password} />
         <Divider />
         <View style={styles.alternativeLogin}>
-          <SocialLoginButton icon='logo-google' isLoading={false} onPress={handleSignIn} title={''}/>
-          <SocialLoginButton icon='logo-github' isLoading={false} onPress={handleSignIn} title={''} />
+          <SocialLoginButton icon= {require('@/assets/images/google.png')} isLoading={false} onPress={handleSignIn} title={''}/>
+          <SocialLoginButton icon= {require('@/assets/images/github.png')} isLoading={false} onPress={()=>{}} title={''} />
         </View>
-        <Text style={styles.footerText}>Not a member?{' '}<Link href={'/register'} style={styles.footerLink}>Register</Link></Text>
+        <Text style={styles.footerText}>Not a member?{' '}</Text>
      </View>
   );
 };

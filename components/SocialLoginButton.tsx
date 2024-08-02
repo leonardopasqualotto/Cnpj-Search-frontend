@@ -1,10 +1,9 @@
-import {Text,StyleSheet,ActivityIndicator, TouchableOpacity, TouchableOpacityProps, Pressable } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import {Text,StyleSheet,ActivityIndicator, TouchableOpacityProps, Image,Pressable, ImageSourcePropType } from 'react-native';
 
 interface SocialLoginButtonProps extends TouchableOpacityProps{
   title:string,
   isLoading?:boolean
-  icon: keyof typeof Ionicons.glyphMap
+  icon: ImageSourcePropType
 }
 
 export function SocialLoginButton({title,isLoading=false,icon,...rest}:SocialLoginButtonProps) {
@@ -12,7 +11,7 @@ export function SocialLoginButton({title,isLoading=false,icon,...rest}:SocialLog
     <Pressable style={styles.socialLogin}  disabled={isLoading}{...rest} >
       {isLoading ? <ActivityIndicator color={'#000'}/> : 
       <> 
-       <Ionicons name={icon} size={20} />
+       <Image source={icon} style={{maxHeight:30,maxWidth:30}}/>
         <Text style={styles.socialLoginText}>{title}</Text>
       </>
       }

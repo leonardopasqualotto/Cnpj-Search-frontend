@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text,TextInput, StyleSheet, InputModeOptions } from 'react-native';
+import { Text,TextInput, StyleSheet } from 'react-native';
 
 interface InputGroupProps{
     label:string

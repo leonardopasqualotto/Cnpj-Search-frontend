@@ -4,7 +4,7 @@ export default function Home() {
  
   return (
     <View>
-      <Text style={styles.title}>Home</Text>
+      <Text style={styles.title}>Homdsdsde</Text>
     </View>
   );
 }

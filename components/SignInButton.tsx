@@ -1,4 +1,4 @@
-import { useUser } from '@/hooks/context';
+import { useUserData } from '@/hooks/context';
 import React from 'react';
 import { Pressable, StyleSheet, Text } from 'react-native';
 
@@ -8,7 +8,7 @@ interface SignInButtonProps{
 }
 
 export function SignInButton({user, password}:SignInButtonProps) {
-    const { signIn } = useUser();
+    const { signIn } = useUserData();
   return (
     <Pressable onPress={ ()=> signIn(user,password)} style={styles.button}>
         <Text style={styles.buttonText}>Sign in</Text>
