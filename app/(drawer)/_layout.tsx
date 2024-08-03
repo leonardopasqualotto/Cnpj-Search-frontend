@@ -10,10 +10,15 @@ import { useAuthContext } from "@/hooks/context";
 export default function AppLayout() {
 
   const {width} = useWindowDimensions()
-  const {token,isLoading} = useAuthContext()
-  if(isLoading) return(<Text>loading</Text>)
+  const {token,googleData,isLoading} = useAuthContext()
 
-  if(!token )return(<Redirect href={"/login"}/>)
+  if(isLoading) {
+    return(<Text>loading</Text>)
+  }
+
+  if(!token && !googleData){
+    return(<Redirect href={"/login"}/>)
+  }
     
 
 

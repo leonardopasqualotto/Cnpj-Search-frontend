@@ -5,12 +5,13 @@ import { Divider } from './Divider'
 import { SocialLoginButton } from './SocialLoginButton';
 import { InputGroup } from './InputGroup';
 import React from 'react';
+import { useAuthContext } from '@/hooks/context';
 
 export default function SignInForm() {
 
   const [user,setUser] = useState('');
   const [password,setPassword] = useState('');
-
+  const {signInWithGoogle} = useAuthContext()
   return (
       <View style={styles.container}>
         <Text style={styles.subtitle}>Sign in to your account</Text>
@@ -19,8 +20,8 @@ export default function SignInForm() {
         <SignInButton user={user}password={password} />
         <Divider />
         <View style={styles.alternativeLogin}>
-          <SocialLoginButton icon= {require('@/assets/images/google.png')} isLoading={false} onPress={()=>{}}title={''}/>
-          <SocialLoginButton icon= {require('@/assets/images/github.png')} isLoading={false} onPress={()=>{}} title={''} />
+          <SocialLoginButton icon= {require('@/assets/images/google.png')} onPress={signInWithGoogle}title={''}/>
+          <SocialLoginButton icon= {require('@/assets/images/github.png')} onPress={()=>{}} title={''} />
         </View>
         <Text style={styles.footerText}>Not a member?{' '}</Text>
      </View>

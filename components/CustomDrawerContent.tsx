@@ -4,9 +4,9 @@ import { router } from "expo-router";
 import {Image,Platform,StyleSheet} from 'react-native'
 import { useAuthContext } from "@/hooks/context";
 
-
 export default function CustomDrawerContent() {
-  const {signOut} =useAuthContext()
+
+  const {signOut} = useAuthContext()
     return (
       <DrawerContentScrollView >
         <Image 
@@ -24,7 +24,7 @@ export default function CustomDrawerContent() {
             iconName='person' />
         <CustomDrawerItem 
             label={"Sair"} 
-            onPress={()=>signOut()} 
+            onPress={signOut} 
             iconName='logout' 
         />
       </DrawerContentScrollView>
