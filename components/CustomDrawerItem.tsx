@@ -1,20 +1,24 @@
+import { CustomDrawerItemProps } from "@/utils/interfaces"
 import { MaterialIcons } from "@expo/vector-icons"
 import { DrawerItem } from "@react-navigation/drawer"
 
-interface CustomDrawerItemProps{
-    label:string 
-    onPress:()=>void 
-    iconName: keyof typeof MaterialIcons.glyphMap  
-  }
-
-
-export default function CustomDrawerItem({label,iconName,onPress}: CustomDrawerItemProps){
-    return(
-    <DrawerItem 
-      label={label} 
-      labelStyle={{color:'#fff'}} 
-      onPress={onPress} 
-      icon={()=><MaterialIcons name={iconName} size={30} color={'#fff'}/>}  
-    />
+export default function CustomDrawerItem({label, onPress, iconName, index, props}:CustomDrawerItemProps){
+    return(  
+      <DrawerItem 
+        label={label}
+        onPress={onPress} 
+        icon={()=> 
+          <MaterialIcons name={iconName} size={30} color={props.state.index === index ? '#fff' : '#C7D2FE'}/>
+        }  
+        focused = {props.state.index === index}
+        style={props.state.index === index ? 
+          {backgroundColor:'#4338CA', borderRadius:10} : 
+          null
+        }
+        labelStyle={props.state.index ===index ? 
+          {color:'#fff', fontWeight:'800'} : 
+          {color:'#C7D2FE'}
+        } 
+      />
     )
   }

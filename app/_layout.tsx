@@ -1,19 +1,12 @@
-import { UserProvider } from '@/hooks/context';
-import { ClerkProvider, } from '@clerk/clerk-expo';
+import { UserProvider } from '@/context/context';
 import { Slot } from 'expo-router';
 
 export default function Root() {
-
-  const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY as string 
   
   return (
-   
-    <ClerkProvider publishableKey={publishableKey}>
       <UserProvider>
         <Slot/>
       </UserProvider> 
-    </ClerkProvider>
-    
   );
 }
 

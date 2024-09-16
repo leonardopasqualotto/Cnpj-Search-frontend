@@ -1,36 +1,33 @@
-
-import { useAuthContext } from '@/hooks/context';
 import React from 'react';
-import { Pressable, StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
+import { TouchableOpacity, TouchableOpacityProps } from 'react-native';
 
-interface SignInButtonProps{
-    user:string
-    password:string
+export interface ButtonPropps extends TouchableOpacityProps{
+  title:string
 }
 
-export function SignInButton({user, password}:SignInButtonProps) {
-    const { signIn } = useAuthContext();
+export function SignInButton({title, ...rest}:ButtonPropps) {
+   
   return (
-    <Pressable onPress={ ()=> signIn(user,password)} style={styles.button}>
-        <Text style={styles.buttonText}>Sign in</Text>
-    </Pressable>
+    <TouchableOpacity {...rest}style={styles.button}>
+        <Text style={styles.buttonText}>{title}</Text>
+    </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
 
     button: {
-      marginTop: 16,
       backgroundColor: '#4f46e5',
       paddingVertical: 12,
       borderRadius: 8,
-      alignItems: 'center'
+      alignItems: 'center',
+      justifyContent:'center',
     },
     buttonText: {
       color: '#fff',
       fontSize: 16,
       fontWeight: '600',
     },
-  
   });
   

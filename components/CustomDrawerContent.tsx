@@ -1,43 +1,20 @@
+import CustomDrawerItem from "@/components/CustomDrawerItem";
+import { router} from "expo-router";
 import { DrawerContentScrollView } from "@react-navigation/drawer";
-import CustomDrawerItem from "./CustomDrawerItem";
-import { router } from "expo-router";
-import {Image,Platform,StyleSheet} from 'react-native'
-import { useAuthContext } from "@/hooks/context";
+import { Image} from 'react-native'
+import { useAuthContext } from "@/context/context";
 
-export default function CustomDrawerContent() {
-
+export function CustomDrawerContent(props: any) {
   const {signOut} = useAuthContext()
-    return (
-      <DrawerContentScrollView >
-        <Image 
-            style={styles.image} 
-            source={require('@/assets/images/logo.png')}
-        />
-        <CustomDrawerItem 
-            label={"Home"} 
-            onPress={()=>router.navigate('/')} 
-            iconName='home' 
-        />
-        <CustomDrawerItem 
-            label={"Profile"} 
-            onPress={()=>router.navigate('/profile')} 
-            iconName='person' />
-        <CustomDrawerItem 
-            label={"Sair"} 
-            onPress={signOut} 
-            iconName='logout' 
-        />
-      </DrawerContentScrollView>
-    );
-  }
 
-  const styles = StyleSheet.create({
-    image:{
-      justifyContent:'center',
-      borderRadius:10,
-      margin:10,
-      marginBottom:30,
-      maxHeight:60,
-      maxWidth:60
-    }
-  })
+  return (
+    <DrawerContentScrollView style={{backgroundColor:'#4f46e5'}}>
+      <Image 
+        style={{borderRadius:20,margin:10,marginBottom:30,maxHeight:70,maxWidth:70}} 
+        source={require('@/assets/images/logo.png')}/>
+      <CustomDrawerItem index={0} props={props} iconName="search" label={"Busca CNPJ"} onPress={()=>router.navigate('/')}/>
+      <CustomDrawerItem index={1} props={props} iconName="person" label={"Profile"} onPress={()=>router.navigate('/profile')}/>
+      <CustomDrawerItem index={2} props={props} iconName="logout" label={"Sair"} onPress={signOut} />
+    </DrawerContentScrollView>
+  );
+}

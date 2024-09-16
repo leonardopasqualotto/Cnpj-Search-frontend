@@ -1,4 +1,3 @@
-import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 export function Divider() {
@@ -20,7 +19,6 @@ const styles = StyleSheet.create({
       },
     continueWith:{
         fontSize:14,
-        fontWeight:'400',
-        
+        fontWeight:'400', 
       },
   });

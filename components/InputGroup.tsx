@@ -1,30 +1,16 @@
-import React from 'react';
+import { InputGroupProps } from '@/utils/interfaces';
 import { Text,TextInput, StyleSheet } from 'react-native';
 
-interface InputGroupProps{
-    label:string
-    value:string
-    onChageText: React.Dispatch<React.SetStateAction<string>>
-    placeholder:string
-    securityEntry:boolean
-}
-
-export function InputGroup({label, value, onChageText, placeholder, securityEntry}: InputGroupProps) {
+ export function InputGroup({label, ...rest}: InputGroupProps) {
   return (
     <>
-        <Text style={styles.inputLabel}>{label}</Text>
-        <TextInput style={styles.input} 
-            value={value} 
-            placeholder={placeholder} 
-            onChangeText={onChageText} 
-            secureTextEntry={securityEntry}
-        />
+      <Text style={styles.inputLabel}>{label}</Text>
+      <TextInput style={styles.input} {...rest}/>
     </>
   );
 }
 
 const styles = StyleSheet.create({
-
 inputLabel: {
     fontSize: 14,
     fontWeight: '500',
