@@ -21,21 +21,23 @@ This is a frontend for CNPJ'S Search project developed with <b>TypeScript</b>, <
 
 The project structure was designed according to the responsibilities of each files. This is how the folders were defined:
 
-- <b>_Assets_</b>: Static image and icon files, representing non-dynamic sources.
+
+- <b>_App_</b>: Contains the application screens. Each file represents an application page. `_layout.tsx`applies styling to shared elements such as headers and drawer bars that persist across pages.
 
 - <b>_Components_</b>: Decoupled components that can be reused across app screens. 
 
 - <b> _Context_</b>:  Responsible for managing the global state of the application using the Context API hook. `AuthContext.tsx` manages authentication and logged-in user state (token, user data, Facebook data, Google data, CNPJ, etc.).
 
+- <b>_Assets_</b>: Static image and icon files, representing non-dynamic sources.
+
 - <b> _Utils_</b>: Utility functions such as data formatting (`format.ts`) and  `interfaces.ts` used in the context of typescript. It also contains the baseURL that connects (via axios) the API with the backend.
 
 <h2 id="tech">💻 Technologies</h2>
 
-<h4>TYPESCRIPT</h4> <img src="assets/images/Typescript.png" alt="React" width="30"/>
-<h4>REACT NATIVE</h4><img src="assets/images/react-logo.png" alt="React" width="30"/> 
-<h4>EXPO</h4><img src="assets/images/expo-go.png" alt="React" width="30"/> 
-<h4>AXIOS</h4><img src="assets/images/axios.png" alt="React" width="30"/> 
-
+- <img src="assets/images/Typescript.png" alt="TypeScript" width="30" height="30" align="center" style="display: inline;" /><h4 style="display: inline;"> TYPESCRIPT</h4>
+- <img src="assets/images/react-logo.png" alt="React" width="30" align="center" style="display: inline;"/>  <h4 style="display: inline;">REACT NATIVE</h4> 
+- <img src="assets/images/expo-go.png" alt="React" width="30" align="center" style="display: inline;"/> <h4 style="display: inline;"> EXPO</h4>
+- <img src="assets/images/axios.png" alt="React" width="30" align="center" style="display: inline;"/>  <h4 style="display: inline;"> AXIOS</h4>
 
 <h2 id="started">🚀 Getting started</h2>
 
