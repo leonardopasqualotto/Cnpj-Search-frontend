@@ -57,7 +57,13 @@ Here you describe how to run your project locally
    npm install
    ```
 
-3) Start the app
+3) Edit your baseURL file `api.ts` with your IP adress credentials to connect with API endpoints in backend project.
+
+    ```yaml
+    baseURL:'http://000.000.0.00:8080'
+    ```
+
+4) Start the app
 
    ```bash
     npx expo start
