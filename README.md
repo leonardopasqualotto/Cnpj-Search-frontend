@@ -1,50 +1,64 @@
-# Welcome to your Expo app 👋
+<h1 align="center" style="font-weight: bold;">Cnpj Search - Frontend 💻</h1>
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+![Typescript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![React](https://shields.io/badge/react-black?logo=react&style=for-the-badge)
+<img alt="Build with EAS" src="https://img.shields.io/badge/Build-000.svg?style=for-the-badge&logo=EXPO&labelColor=000&logoColor=FFF">
 
-## Get started
+<p align="center"
 
-1. Install dependencies
+<a href="#overview">Overview</a> • 
+<a href="#arquitecture">Arquitecture</a> • 
+<a href="#tech">Technologies</a> • 
+ <a href="#started">Getting Started</a> 
+
+</p>
+
+<h2 id="overview">🔎 Overview </h2>
+
+This is a frontend for CNPJ'S Search project developed with <b>TypeScript</b>, <b>React Native</b> and <b>Expo</b>. The application allows login with Google, Facebook or via  API connected to  <a href="https://github.com/leonardopasqualotto/Cnpj-Search-backend">CNPJ Search - Backend</a>.
+
+<h2 id="architecture">📐 Project Structure </h2>
+
+The project structure was designed according to the responsibilities of each files. This is how the folders were defined:
+
+- <b>_Assets_</b>: Static image and icon files, representing non-dynamic sources.
+
+- <b>_Components_</b>: Decoupled components that can be reused across app screens. 
+
+- <b> _Context_</b>:  Responsible for managing the global state of the application using the Context API hook. `AuthContext.tsx` manages authentication and logged-in user state (token, user data, Facebook data, Google data, CNPJ, etc.).
+
+- <b> _Utils_</b>: Utility functions such as data formatting (`format.ts`) and  `interfaces.ts` used in the context of typescript. It also contains the baseURL that connects (via axios) the API with the backend.
+
+<h2 id="tech">💻 Technologies</h2>
+
+<h4>TYPESCRIPT</h4> <img src="assets/images/Typescript.png" alt="React" width="30"/>
+<h4>REACT NATIVE</h4><img src="assets/images/react-logo.png" alt="React" width="30"/> 
+<h4>EXPO</h4><img src="assets/images/expo-go.png" alt="React" width="30"/> 
+<h4>AXIOS</h4><img src="assets/images/axios.png" alt="React" width="30"/> 
+
+
+<h2 id="started">🚀 Getting started</h2>
+
+Here you describe how to run your project locally
+
+<h3>Prerequisites</h3>
+
+1) Clone and run the ETL process from repository [Dados_Publicos_CNPJ](https://github.com/leonardopasqualotto/Receita_Federal_do_Brasil_-_Dados_Publicos_CNPJ)
+
+1) Clone and run  [CNPJ Search - Backend](https://github.com/leonardopasqualotto/Cnpj-Search-backend)
+
+<h3>Starting</h3>
+
+1) ```git clone https://github.com/leonardopasqualotto/Cnpj-Search-frontend```
+
+2) Install dependencies
 
    ```bash
    npm install
    ```
 
-2. Start the app
+3) Start the app
 
    ```bash
     npx expo start
    ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
